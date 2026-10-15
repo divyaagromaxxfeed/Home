@@ -1,0 +1,663 @@
+```html
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DivyaAgroMaxx Feed | Premium Agricultural Feeds</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Phosphor Icons for professional iconography -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <!-- Google Fonts: Inter for clean typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        // Tailwind Configuration for custom brand colors
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#fff6f3',
+                            100: '#ffece5',
+                            200: '#ffd3c2',
+                            300: '#ffb399',
+                            400: '#ff8a66',
+                            500: '#f2683c',
+                            600: '#d95128',
+                            700: '#b33e1c',
+                            800: '#8c331a',
+                            900: '#732d19',
+                        },
+                        earth: {
+                            100: '#f5f5f0',
+                            200: '#e6e5db',
+                            800: '#5c5742',
+                            900: '#4a4635',
+                        }
+                    },
+                    backgroundImage: {
+                        'hero-pattern': "linear-gradient(to right bottom, rgba(115, 45, 25, 0.9), rgba(217, 81, 40, 0.8)), url('https://placehold.co/1920x1080/732d19/d95128?text=Agricultural+Landscape')",
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar for webkit browsers */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #f2683c;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d95128;
+        }
+        
+        /* Utility class for hiding elements */
+        .hidden-mobile-menu {
+            display: none;
+        }
+        
+        /* Fade in animation */
+        .fade-in {
+            animation: fadeIn 0.8s ease-in-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-earth-100 antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="scrollToSection('home')">
+                    <i class="ph-fill ph-plant text-4xl text-brand-500 mr-2"></i>
+                    <span class="font-bold text-2xl tracking-tight text-brand-900 hidden sm:block">DivyaAgroMaxx<span class="text-brand-500">Feed</span></span>
+                    <span class="font-bold text-xl tracking-tight text-brand-900 sm:hidden">AgroMaxx</span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#home" class="nav-link text-gray-700 hover:text-brand-600 font-medium transition-colors">Home</a>
+                    <a href="#about" class="nav-link text-gray-700 hover:text-brand-600 font-medium transition-colors">About Us</a>
+                    <a href="#products" class="nav-link text-gray-700 hover:text-brand-600 font-medium transition-colors">Products</a>
+                    <a href="#quality" class="nav-link text-gray-700 hover:text-brand-600 font-medium transition-colors">Quality</a>
+                    <a href="#contact" class="px-5 py-2.5 rounded-full bg-brand-600 text-white font-medium hover:bg-brand-700 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">Contact Us</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-brand-600 focus:outline-none p-2">
+                        <i class="ph ph-list text-3xl" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-xl absolute w-full border-t border-gray-100">
+            <div class="px-4 pt-2 pb-6 space-y-2 flex flex-col">
+                <a href="#home" class="mobile-nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-800 hover:text-brand-600 hover:bg-brand-50">Home</a>
+                <a href="#about" class="mobile-nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-800 hover:text-brand-600 hover:bg-brand-50">About Us</a>
+                <a href="#products" class="mobile-nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-800 hover:text-brand-600 hover:bg-brand-50">Products</a>
+                <a href="#quality" class="mobile-nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-800 hover:text-brand-600 hover:bg-brand-50">Quality</a>
+                <a href="#contact" class="mobile-nav-link block px-3 py-3 mt-4 text-center rounded-md text-base font-medium bg-brand-600 text-white hover:bg-brand-700">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-20 pb-32 lg:pt-32 lg:pb-48 overflow-hidden min-h-screen flex items-center bg-hero-pattern bg-cover bg-center bg-no-repeat bg-fixed">
+        <div class="absolute inset-0 bg-brand-900/40 mix-blend-multiply"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left z-10 fade-in">
+            <div class="lg:w-2/3">
+                <span class="inline-block py-1 px-3 rounded-full bg-brand-500/20 text-brand-100 text-sm font-semibold tracking-wider mb-4 border border-brand-400/30 backdrop-blur-sm">
+                    PREMIUM ANIMAL NUTRITION
+                </span>
+                <h1 class="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl lg:text-7xl leading-tight mb-6">
+                    Nourishing Growth,<br>
+                    <span class="text-brand-300">Sustaining Life.</span>
+                </h1>
+                <p class="mt-3 max-w-md mx-auto sm:mx-0 text-base text-gray-200 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl mb-8">
+                    DivyaAgroMaxx Feed delivers scientifically formulated, high-yield livestock and poultry nutrition. Empowering farmers with quality feed for healthier animals and better returns.
+                </p>
+                <div class="mt-10 sm:flex sm:justify-start justify-center gap-4">
+                    <button onclick="scrollToSection('products')" class="flex items-center justify-center px-8 py-3.5 border border-transparent text-base font-medium rounded-full text-brand-900 bg-brand-300 hover:bg-brand-200 md:py-4 md:text-lg md:px-10 transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 w-full sm:w-auto">
+                        View Products
+                    </button>
+                    <button onclick="scrollToSection('contact')" class="mt-3 sm:mt-0 flex items-center justify-center px-8 py-3.5 border-2 border-white text-base font-medium rounded-full text-white hover:bg-white hover:text-brand-900 md:py-4 md:text-lg md:px-10 transition-all w-full sm:w-auto">
+                        Speak to an Expert
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-20 lg:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+                <div class="mb-12 lg:mb-0 relative">
+                    <!-- Image Placeholder -->
+                    <div class="rounded-2xl overflow-hidden shadow-2xl relative z-10 group">
+                        <img src="https://placehold.co/800x1000/732d19/ffd3c2?text=Modern+Feed+Mill+Facility" alt="DivyaAgroMaxx Facility" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                            <div class="p-8 text-white">
+                                <p class="font-bold text-2xl">State-of-the-art Milling</p>
+                                <p class="text-gray-200 text-sm mt-2">Established 2010</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Decorative Element -->
+                    <div class="absolute -bottom-6 -right-6 w-48 h-48 bg-brand-100 rounded-full z-0"></div>
+                    <div class="absolute -top-6 -left-6 w-32 h-32 bg-earth-200 rounded-full z-0"></div>
+                </div>
+                
+                <div>
+                    <h2 class="text-base text-brand-600 font-semibold tracking-wide uppercase">About DivyaAgroMaxx</h2>
+                    <h3 class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl mb-6">
+                        Cultivating Prosperity Through Superior Nutrition
+                    </h3>
+                    <p class="mt-4 text-lg text-gray-600 mb-6 leading-relaxed">
+                        At DivyaAgroMaxx Feed, we believe that the foundation of successful farming lies in the quality of nutrition provided to livestock and poultry. With over a decade of dedication to the agricultural sector, we have established ourselves as a trusted partner for farmers nationwide.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                        Our state-of-the-art manufacturing facilities combine traditional agricultural wisdom with modern nutritional science to produce feeds that guarantee optimal growth, immunity, and yield.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
+                        <div class="bg-brand-50 rounded-xl p-6 border border-brand-100">
+                            <i class="ph-fill ph-target text-3xl text-brand-600 mb-3"></i>
+                            <h4 class="text-xl font-bold text-brand-900 mb-2">Our Mission</h4>
+                            <p class="text-gray-600 text-sm">To provide innovative, cost-effective, and highly nutritious feed solutions that maximize farmer profitability.</p>
+                        </div>
+                        <div class="bg-brand-50 rounded-xl p-6 border border-brand-100">
+                            <i class="ph-fill ph-eye text-3xl text-brand-600 mb-3"></i>
+                            <h4 class="text-xl font-bold text-brand-900 mb-2">Our Vision</h4>
+                            <p class="text-gray-600 text-sm">To be the undisputed leader in sustainable animal nutrition, fostering a thriving agricultural ecosystem.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-20 lg:py-28 bg-earth-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-base text-brand-600 font-semibold tracking-wide uppercase">Our Catalog</h2>
+                <h3 class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    Premium Feed Solutions
+                </h3>
+                <p class="mt-4 max-w-2xl text-xl text-gray-600 mx-auto">
+                    Scientifically formulated diets tailored for specific growth stages and species requirements.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Product Card 1 -->
+                <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden group flex flex-col h-full border border-gray-100">
+                    <div class="relative h-48 overflow-hidden bg-brand-100 flex items-center justify-center">
+                        <i class="ph-fill ph-cow text-6xl text-brand-700/20 absolute"></i>
+                        <img src="https://placehold.co/600x400/d95128/ffffff?text=Dairy+Cattle+Feed" alt="Dairy Cattle Feed" class="w-full h-full object-cover mix-blend-overlay group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur text-brand-700 text-xs font-bold px-3 py-1 rounded-full shadow">Bestseller</div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-brand-600 transition-colors">Dairy Cattle Feed</h4>
+                            <p class="text-gray-600 text-sm mb-4 line-clamp-3">High-energy compound feed designed to maximize milk yield, improve butterfat content, and ensure overall cow health during lactation.</p>
+                        </div>
+                        <ul class="space-y-2 mb-6 text-sm text-gray-500">
+                            <li class="flex items-center"><i class="ph-bold ph-check text-brand-500 mr-2"></i> Rich in bypass protein</li>
+                            <li class="flex items-center"><i class="ph-bold ph-check text-brand-500 mr-2"></i> Fortified with minerals</li>
+                        </ul>
+                        <button onclick="showModal('Dairy Cattle Feed', 'Detailed product specifications for our Dairy Cattle Feed are currently being updated. Please check back later or contact our sales team.')" class="w-full py-2.5 px-4 bg-earth-100 text-brand-700 font-medium rounded-lg hover:bg-brand-600 hover:text-white transition-colors border border-brand-200">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden group flex flex-col h-full border border-gray-100">
+                    <div class="relative h-48 overflow-hidden bg-brand-100 flex items-center justify-center">
+                        <i class="ph-fill ph-bird text-6xl text-brand-700/20 absolute"></i>
+                        <img src="https://placehold.co/600x400/8c331a/ffffff?text=Poultry+Feed" alt="Poultry Feed" class="w-full h-full object-cover mix-blend-overlay group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-brand-600 transition-colors">Poultry Feed (Broiler & Layer)</h4>
+                            <p class="text-gray-600 text-sm mb-4 line-clamp-3">Optimized crumb and pellet feeds ensuring rapid weight gain for broilers and sustained, high-quality egg production for layers.</p>
+                        </div>
+                        <ul class="space-y-2 mb-6 text-sm text-gray-500">
+                            <li class="flex items-center"><i class="ph-bold ph-check text-brand-500 mr-2"></i> Balanced amino acids</li>
+                            <li class="flex items-center"><i class="ph-bold ph-check text-brand-500 mr-2"></i> Optimal FCR</li>
+                        </ul>
+                        <button onclick="showModal('Poultry Feed', 'Detailed product specifications for our Poultry Feed are currently being updated. Please check back later or contact our sales team.')" class="w-full py-2.5 px-4 bg-earth-100 text-brand-700 font-medium rounded-lg hover:bg-brand-600 hover:text-white transition-colors border border-brand-200">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden group flex flex-col h-full border border-gray-100">
+                    <div class="relative h-48 overflow-hidden bg-brand-100 flex items-center justify-center">
+                        <i class="ph-fill ph-fish text-6xl text-brand-700/20 absolute"></i>
+                        <img src="https://placehold.co/600x400/d95128/ffffff?text=Aqua+Feed" alt="Aqua Feed" class="w-full h-full object-cover mix-blend-overlay group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-brand-600 transition-colors">Aqua Feed</h4>
+                            <p class="text-gray-600 text-sm mb-4 line-clamp-3">Floating and sinking pellets for fish and shrimp. High digestibility formulation to maintain water quality and promote rapid growth.</p>
+                        </div>
+                        <ul class="space-y-2 mb-6 text-sm text-gray-500">
+                            <li class="flex items-center"><i class="ph-bold ph-check text-brand-500 mr-2"></i> Water stable pellets</li>
+                            <li class="flex items-center"><i class="ph-bold ph-check text-brand-500 mr-2"></i> High protein retention</li>
+                        </ul>
+                        <button onclick="showModal('Aqua Feed', 'Detailed product specifications for our Aqua Feed are currently being updated. Please check back later or contact our sales team.')" class="w-full py-2.5 px-4 bg-earth-100 text-brand-700 font-medium rounded-lg hover:bg-brand-600 hover:text-white transition-colors border border-brand-200">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Product Card 4 -->
+                <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden group flex flex-col h-full border border-gray-100">
+                    <div class="relative h-48 overflow-hidden bg-brand-100 flex items-center justify-center">
+                        <i class="ph-fill ph-pig text-6xl text-brand-700/20 absolute"></i>
+                        <img src="https://placehold.co/600x400/8c331a/ffffff?text=Swine+Feed" alt="Swine Feed" class="w-full h-full object-cover mix-blend-overlay group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-brand-600 transition-colors">Swine Feed</h4>
+                            <p class="text-gray-600 text-sm mb-4 line-clamp-3">Complete nutritional solutions from creep to finisher stages, formulated to maximize lean meat deposition and herd health.</p>
+                        </div>
+                        <ul class="space-y-2 mb-6 text-sm text-gray-500">
+                            <li class="flex items-center"><i class="ph-bold ph-check text-brand-500 mr-2"></i> Gut health promoters</li>
+                            <li class="flex items-center"><i class="ph-bold ph-check text-brand-500 mr-2"></i> High digestibility</li>
+                        </ul>
+                        <button onclick="showModal('Swine Feed', 'Detailed product specifications for our Swine Feed are currently being updated. Please check back later or contact our sales team.')" class="w-full py-2.5 px-4 bg-earth-100 text-brand-700 font-medium rounded-lg hover:bg-brand-600 hover:text-white transition-colors border border-brand-200">View Details</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="#contact" class="inline-flex items-center text-brand-600 font-semibold hover:text-brand-800 transition-colors">
+                    Looking for custom feed formulations? Contact our experts
+                    <i class="ph-bold ph-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quality Assurance Section -->
+    <section id="quality" class="py-20 lg:py-28 bg-brand-900 text-white relative overflow-hidden">
+        <!-- Background decorative vectors -->
+        <div class="absolute opacity-10 -right-20 -top-20">
+            <i class="ph-fill ph-certificate text-[30rem]"></i>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-brand-300 font-semibold tracking-wide uppercase">Uncompromising Standards</h2>
+                <h3 class="mt-2 text-3xl leading-8 font-extrabold tracking-tight sm:text-4xl text-white">
+                    Our Quality Assurance
+                </h3>
+                <p class="mt-4 max-w-2xl text-xl text-gray-300 mx-auto">
+                    Every batch of DivyaAgroMaxx feed undergoes rigorous testing to ensure it meets our strict nutritional and safety benchmarks.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- QA Feature 1 -->
+                <div class="bg-brand-800/50 backdrop-blur-sm border border-brand-700 rounded-2xl p-8 hover:bg-brand-800 transition-colors">
+                    <div class="w-14 h-14 bg-brand-600 rounded-xl flex items-center justify-center mb-6 shadow-inner">
+                        <i class="ph-fill ph-flask text-3xl text-white"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3 text-white">Advanced Laboratory Testing</h4>
+                    <p class="text-brand-100/80 leading-relaxed">
+                        In-house NIR (Near Infrared Spectroscopy) technology ensures real-time analysis of raw materials and finished products for exact nutritional profiles.
+                    </p>
+                </div>
+
+                <!-- QA Feature 2 -->
+                <div class="bg-brand-800/50 backdrop-blur-sm border border-brand-700 rounded-2xl p-8 hover:bg-brand-800 transition-colors">
+                    <div class="w-14 h-14 bg-brand-600 rounded-xl flex items-center justify-center mb-6 shadow-inner">
+                        <i class="ph-fill ph-leaf text-3xl text-white"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3 text-white">Sustainably Sourced Ingredients</h4>
+                    <p class="text-brand-100/80 leading-relaxed">
+                        We partner directly with verified farmers to source premium grains and organic supplements, ensuring traceability and pesticide-free inputs.
+                    </p>
+                </div>
+
+                <!-- QA Feature 3 -->
+                <div class="bg-brand-800/50 backdrop-blur-sm border border-brand-700 rounded-2xl p-8 hover:bg-brand-800 transition-colors">
+                    <div class="w-14 h-14 bg-brand-600 rounded-xl flex items-center justify-center mb-6 shadow-inner">
+                        <i class="ph-fill ph-seal-check text-3xl text-white"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3 text-white">ISO & GMP Certified</h4>
+                    <p class="text-brand-100/80 leading-relaxed">
+                        Our manufacturing processes adhere to strict international safety and quality standards, guaranteeing a contaminant-free feed every time.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="mt-16 flex justify-center">
+                <div class="inline-flex items-center space-x-8 opacity-70 grayscale">
+                    <!-- Placeholder for certification logos -->
+                    <div class="flex items-center text-xl font-bold"><i class="ph-fill ph-medal text-2xl mr-2"></i> ISO 9001</div>
+                    <div class="flex items-center text-xl font-bold"><i class="ph-fill ph-shield-check text-2xl mr-2"></i> GMP+</div>
+                    <div class="flex items-center text-xl font-bold hidden sm:flex"><i class="ph-fill ph-plant text-2xl mr-2"></i> HACCP</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 lg:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                
+                <!-- Contact Info -->
+                <div>
+                    <h2 class="text-base text-brand-600 font-semibold tracking-wide uppercase">Get in Touch</h2>
+                    <h3 class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl mb-6">
+                        Ready to boost your farm's productivity?
+                    </h3>
+                    <p class="text-lg text-gray-600 mb-10">
+                        Our agricultural experts are ready to assist you in choosing the right nutritional plan for your livestock. Reach out today for inquiries, bulk orders, or distributorship opportunities.
+                    </p>
+                    
+                    <div class="space-y-8">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-brand-100 p-3 rounded-full">
+                                <i class="ph-fill ph-map-pin text-2xl text-brand-600"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-bold text-gray-900">Head Office & Plant</h4>
+                                <p class="mt-1 text-gray-600">Plot No. 45, Agro Industrial Estate,<br>Green Valley, Earthville, 100021</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-brand-100 p-3 rounded-full">
+                                <i class="ph-fill ph-phone text-2xl text-brand-600"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-bold text-gray-900">Phone</h4>
+                                <p class="mt-1 text-gray-600">Toll-Free: 1-800-AGRO-MAX</p>
+                                <p class="text-gray-600">Sales: +1 (555) 123-4567</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-brand-100 p-3 rounded-full">
+                                <i class="ph-fill ph-envelope-simple text-2xl text-brand-600"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-bold text-gray-900">Email</h4>
+                                <p class="mt-1 text-gray-600">info@divyaagromaxx.com</p>
+                                <p class="text-gray-600">sales@divyaagromaxx.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="bg-earth-100 p-8 sm:p-10 rounded-2xl shadow-lg border border-earth-200 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand-200 rounded-bl-full opacity-50 pointer-events-none"></div>
+                    <form id="contactForm" class="relative z-10">
+                        <h4 class="text-2xl font-bold text-gray-900 mb-6">Send us a message</h4>
+                        
+                        <div class="grid grid-cols-1 gap-6 mb-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                                <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 bg-white shadow-sm transition-colors outline-none" placeholder="John Doe">
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                                <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 bg-white shadow-sm transition-colors outline-none" placeholder="john@example.com">
+                            </div>
+                            
+                            <div>
+                                <label for="interest" class="block text-sm font-medium text-gray-700 mb-1">Interested In</label>
+                                <select id="interest" name="interest" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 bg-white shadow-sm transition-colors outline-none">
+                                    <option value="general">General Inquiry</option>
+                                    <option value="cattle">Dairy Cattle Feed</option>
+                                    <option value="poultry">Poultry Feed</option>
+                                    <option value="aqua">Aqua Feed</option>
+                                    <option value="distributorship">Distributorship</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                                <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 bg-white shadow-sm transition-colors outline-none resize-none" placeholder="How can we help you?"></textarea>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="w-full flex justify-center items-center py-3.5 px-4 border border-transparent rounded-lg shadow-sm text-lg font-medium text-white bg-brand-600 hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-500 transition-colors">
+                            <i class="ph-bold ph-paper-plane-right mr-2"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-earth-900 text-earth-200 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center mb-4">
+                        <i class="ph-fill ph-plant text-3xl text-brand-500 mr-2"></i>
+                        <span class="font-bold text-xl tracking-tight text-white">DivyaAgroMaxx</span>
+                    </div>
+                    <p class="text-sm text-earth-200 mb-6">
+                        Pioneering excellence in animal nutrition to ensure sustainable agriculture and food security globally.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-earth-200 hover:text-brand-400 transition-colors">
+                            <i class="ph-fill ph-facebook-logo text-2xl"></i>
+                        </a>
+                        <a href="#" class="text-earth-200 hover:text-brand-400 transition-colors">
+                            <i class="ph-fill ph-twitter-logo text-2xl"></i>
+                        </a>
+                        <a href="#" class="text-earth-200 hover:text-brand-400 transition-colors">
+                            <i class="ph-fill ph-linkedin-logo text-2xl"></i>
+                        </a>
+                        <a href="#" class="text-earth-200 hover:text-brand-400 transition-colors">
+                            <i class="ph-fill ph-instagram-logo text-2xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-bold mb-4 uppercase tracking-wider text-sm">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-sm hover:text-brand-400 transition-colors">Home</a></li>
+                        <li><a href="#about" class="text-sm hover:text-brand-400 transition-colors">About Us</a></li>
+                        <li><a href="#products" class="text-sm hover:text-brand-400 transition-colors">Products</a></li>
+                        <li><a href="#quality" class="text-sm hover:text-brand-400 transition-colors">Quality Assurance</a></li>
+                        <li><a href="#contact" class="text-sm hover:text-brand-400 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-bold mb-4 uppercase tracking-wider text-sm">Products</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#products" class="text-sm hover:text-brand-400 transition-colors">Dairy Cattle Feed</a></li>
+                        <li><a href="#products" class="text-sm hover:text-brand-400 transition-colors">Poultry Feed</a></li>
+                        <li><a href="#products" class="text-sm hover:text-brand-400 transition-colors">Aqua Feed</a></li>
+                        <li><a href="#products" class="text-sm hover:text-brand-400 transition-colors">Swine Feed</a></li>
+                        <li><a href="#products" class="text-sm hover:text-brand-400 transition-colors">Custom Premixes</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-bold mb-4 uppercase tracking-wider text-sm">Newsletter</h4>
+                    <p class="text-sm mb-4">Subscribe to our newsletter for the latest farming tips and product updates.</p>
+                    <form class="flex" onsubmit="event.preventDefault(); showModal('Success', 'Thank you for subscribing to our newsletter.');">
+                        <input type="email" required placeholder="Your email" class="w-full px-3 py-2 bg-earth-800 border border-earth-800 rounded-l-md focus:outline-none focus:border-brand-500 text-white text-sm">
+                        <button type="submit" class="bg-brand-600 px-4 py-2 rounded-r-md hover:bg-brand-700 transition-colors text-white">
+                            <i class="ph-bold ph-paper-plane-right"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-earth-800 text-sm text-center flex flex-col md:flex-row justify-between items-center">
+                <p>&copy; 2026 DivyaAgroMaxx Feed. All rights reserved.</p>
+                <div class="mt-4 md:mt-0 space-x-4">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom Modal for Forms instead of alert() -->
+    <div id="custom-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-gray-900/60 backdrop-blur-sm" onclick="closeModal()"></div>
+        <!-- Modal Content -->
+        <div class="bg-white rounded-2xl p-8 max-w-sm w-full relative z-10 shadow-2xl transform transition-all scale-95 opacity-0" id="modal-content">
+            <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-brand-100 mb-6">
+                <i class="ph-fill ph-check-circle text-4xl text-brand-600"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-center text-gray-900 mb-2" id="modal-title">Success</h3>
+            <p class="text-center text-gray-600 mb-8" id="modal-message">Your message has been sent successfully.</p>
+            <button onclick="closeModal()" class="w-full inline-flex justify-center rounded-lg border border-transparent shadow-sm px-4 py-3 bg-brand-600 text-base font-medium text-white hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-500">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <!-- JavaScript Interactions -->
+    <script>
+        // --- Navigation and Scroll Handling ---
+        const navbar = document.getElementById('navbar');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+        
+        // Sticky Header & Active State
+        window.addEventListener('scroll', () => {
+            // Header styling on scroll
+            if (window.scrollY > 20) {
+                navbar.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-sm', 'border-b', 'border-gray-100');
+                navbar.classList.remove('py-2');
+            } else {
+                navbar.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-sm', 'border-b', 'border-gray-100');
+                navbar.classList.add('py-2');
+            }
+
+            // Highlight active section link
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('text-brand-600', 'font-bold');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('text-brand-600', 'font-bold');
+                }
+            });
+        });
+
+        // Smooth Scroll function
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if(element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+                // Close mobile menu if open
+                if (!mobileMenu.classList.contains('hidden')) {
+                    toggleMobileMenu();
+                }
+            }
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.remove('ph-x');
+                menuIcon.classList.add('ph-list');
+            } else {
+                menuIcon.classList.remove('ph-list');
+                menuIcon.classList.add('ph-x');
+            }
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+        // Close mobile menu when a link is clicked
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', toggleMobileMenu);
+        });
+
+        // --- Custom Modal Handling (Replacing alert) ---
+        const modal = document.getElementById('custom-modal');
+        const modalContent = document.getElementById('modal-content');
+        const modalTitle = document.getElementById('modal-title');
+        const modalMessage = document.getElementById('modal-message');
+
+        function showModal(title, message) {
+            modalTitle.innerText = title;
+            modalMessage.innerText = message;
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            
+            // Trigger animation
+            setTimeout(() => {
+                modalContent.classList.remove('scale-95', 'opacity-0');
+                modalContent.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            modalContent.classList.remove('scale-100', 'opacity-100');
+            modalContent.classList.add('scale-95', 'opacity-0');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }, 300); // match transition duration
+        }
+
+        // --- Form Submission Handling ---
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // In a real app, you would send formData via fetch/ajax here.
+            // For the static SPA, we simulate success.
+            showModal('Inquiry Sent!', 'Thank you for reaching out to DivyaAgroMaxx Feed. Our agricultural specialist will contact you shortly.');
+            contactForm.reset();
+        });
+
+        // Initialize header state on load
+        window.dispatchEvent(new Event('scroll'));
+    </script>
+</body>
+</html>
+```
